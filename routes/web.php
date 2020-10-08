@@ -17,6 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
+// Route::get('/login', function () {
+//     return view('login');
+// });
+
+Route::get('/login', 'Auth\LoginController@index')->name('loginPage');
+// Route::get('/register', 'Auth\RegisterController@index')->name('registerPage');
+
+Route::get('/register', function () {
+    return view('register');
 });
+Route::post('/register', 'Auth\RegisterController@create');
+
+
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
