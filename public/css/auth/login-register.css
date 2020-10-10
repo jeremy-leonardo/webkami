@@ -1,3 +1,6 @@
+.btn-primary {
+    min-width: 50%;
+}
 .card {
     margin: auto;
     width: 520px;

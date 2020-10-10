@@ -5,15 +5,19 @@ body {
 
 /* Bootstrap overrides */
 .btn-primary {
-    width: 208px;
-    height: 49px;
     background: #f37027;
-    border-radius: 5px;
     border: 1px solid #f37027;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
+    /* width: 208px; */
+    /* height: 49px; */
+    /* border-radius: 5px; */
+    /* font-style: normal; */
+    /* font-weight: 500; */
+    /* font-size: 18px; */
+    /* line-height: 21px; */
+}
+.btn-primary:hover {
+    background: #da6729;
+    border: 1px solid #da6729;
 }
 /* ==================== */
 

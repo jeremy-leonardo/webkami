@@ -24,9 +24,11 @@ Route::post('/register', 'Auth\RegisterController@create');
 Route::get('/features', function () { return view('coming-soon'); });
 Route::get('/how-it-works', function () { return view('coming-soon'); });
 Route::get('/dashboard', function () { return view('coming-soon'); });
+Route::get('/coming-soon', function () { return view('coming-soon'); });
 
-Route::get('/', function () { return view('home'); })->name('homePage');
-// Route::get('/', 'HomeController@index')->name('homePage');
+Route::get('/', function () { return view('home'); })->name('home');
+Route::get('/home', function () { return view('home'); })->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 
 
