@@ -53,7 +53,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('login', ['login_as' => '']);
+        return view('auth.login', ['login_as' => '']);
     }
 
 }

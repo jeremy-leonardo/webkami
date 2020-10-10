@@ -1,0 +1,14 @@
+.card {
+    margin: auto;
+    width: 520px;
+    max-width: 100%;
+}
+.login-form {
+    margin-top: 90px;
+}
+input.form-control {
+    width: 100%;
+}
+.submit-container {
+    margin-top: 80px;
+}

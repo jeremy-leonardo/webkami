@@ -1,0 +1,26 @@
+body {
+    /* Global Font */
+    font-family: Roboto, sans-serif;
+}
+
+/* Bootstrap overrides */
+.btn-primary {
+    width: 208px;
+    height: 49px;
+    background: #f37027;
+    border-radius: 5px;
+    border: 1px solid #f37027;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+/* ==================== */
+
+.vector-bg {
+    background-image: url("/images/background/blue-background.svg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}

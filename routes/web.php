@@ -25,10 +25,13 @@ Route::get('/login', 'Auth\LoginController@index')->name('loginPage');
 // Route::get('/register', 'Auth\RegisterController@index')->name('registerPage');
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth.register');
 });
 Route::post('/register', 'Auth\RegisterController@create');
 
+Route::get('/', function () {
+    return view('home');
+});
 
 
 // Auth::routes();
