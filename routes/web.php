@@ -22,18 +22,20 @@ Route::get('/', function () {
 // });
 
 Route::get('/login', 'Auth\LoginController@index')->name('loginPage');
-// Route::get('/register', 'Auth\RegisterController@index')->name('registerPage');
+Route::get('/register', 'Auth\RegisterController@index')->name('registerPage');
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
 Route::post('/register', 'Auth\RegisterController@create');
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('home'); })->name('homePage');
+// Route::get('/', 'HomeController@index')->name('homePage');
+
+Route::get('/features', function () { return view('coming-soon'); });
+Route::get('/how-it-works', function () { return view('coming-soon'); });
+
+Auth::routes();
+
+Route::get('/dashboard', function () { return view('coming-soon'); });
 
 
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

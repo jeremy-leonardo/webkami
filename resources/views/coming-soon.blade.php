@@ -18,10 +18,7 @@
 @section('content')
 
 <div class="vector-bg pt-5 pb-5 temp-filler">
-    <div class="container">
-        @auth
-        <h1 class="pt-5 text-center">Hello {{ Auth::user()->name}}</h1>
-        @endauth
+    <div class="container pt-5 mt-5">
         <h1 class="pt-5 text-center">Coming Soon</h1>
     </div>
 </div>

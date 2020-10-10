@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -38,22 +40,30 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function loginUser(Request $request)
+    public function validateCredentials(UserContract $user, array $credentials)
     {
-        // $this->validate($request, [
-        //     'email'   => 'required|email',
-        //     'password' => 'required|min:6'
-        // ]);
-        if (Auth::guard('user')->attempt(['user_email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        $plain = $credentials['password'];
+
+        return $this->hasher->check($plain, $user->getAuthPassword());
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect()->route('homePage');
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
             return redirect()->intended('/');
         }
-        return back()->withInput($request->only('user_email', 'remember'))->withErrors(['Failed to log in']);
+        return back()->withInput($request->only('email', 'remember'))->withErrors(['Failed to log in']);
     }
 
     public function index()
     {
-        return view('auth.login', ['login_as' => '']);
+        return view('auth.login');
     }
 
 }

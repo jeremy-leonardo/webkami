@@ -73,4 +73,9 @@ class RegisterController extends Controller
         return redirect()->intended('/login');
     }
 
+    public function index()
+    {
+        return view('auth.register');
+    }
+
 }

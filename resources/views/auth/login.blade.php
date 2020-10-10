@@ -14,18 +14,15 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="text-center">Login</h3>
-                <form class="login-form">
+                <form class="login-form" method="POST" action="/login">
+                    @csrf
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordConfirmation">Konfirmasi Password</label>
-                        <input type="password" class="form-control" id="passwordConfirmation" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="text-center submit-container">
                         <button type="submit" class="btn btn-primary">Login</button>
