@@ -28,6 +28,7 @@
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
+                <p class="text-center pt-5">Belum memiliki akun? <a href="/register">Klik di sini untuk daftar</a></p>
             </div>
         </div>
 

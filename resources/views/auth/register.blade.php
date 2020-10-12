@@ -36,6 +36,7 @@
                         <button type="submit" class="btn btn-primary">Daftar</button>
                     </div>
                 </form>
+                <p class="text-center pt-5">Sudah memiliki akun? <a href="/login">Klik di sini untuk login</a></p>
             </div>
         </div>
 
