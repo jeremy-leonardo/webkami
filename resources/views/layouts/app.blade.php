@@ -3,7 +3,11 @@
 
 <head>
 
-    <title>Webkami</title>
+    <title>
+        @section('title')
+        Webkami
+        @show
+    </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
 
@@ -32,10 +36,10 @@
 
 <body>
 
-    @include('layouts._partials.header')
-    <main>
+    <div class="non-footer">
+        @include('layouts._partials.navigation')
         @yield('content')
-    </main>
+    </div>
     @include('layouts._partials.footer')
 
     @include('layouts._partials.script')

@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="vector-bg pt-5 pb-5">
+<div class="vector-bg">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 pt-5 pb-5">

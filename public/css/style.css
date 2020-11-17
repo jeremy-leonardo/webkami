@@ -27,4 +27,26 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    min-height: inherit !important;
+}
+
+.navigation-bar {
+    top: 0px;
+    z-index: 99;
+    width: 100%;
+    position: sticky !important;
+}
+
+.non-footer {
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    background: #f3f3f3;
+    height: 60px;
+}
+
+.no-decor, .no-decor:hover {
+    color: inherit !important;
+    text-decoration: none !important;
 }
