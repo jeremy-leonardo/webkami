@@ -21,6 +21,7 @@ class CreateProjectDetailsTable extends Migration
             $table->index('project_category_id');
             $table->foreign('project_category_id')->references('id')->on('project_categories');
             $table->date('deadline');
+            $table->unsignedBigInteger('budget');
             $table->unsignedBigInteger('client_user_id');
             $table->index('client_user_id');
             $table->foreign('client_user_id')->references('id')->on('users');
