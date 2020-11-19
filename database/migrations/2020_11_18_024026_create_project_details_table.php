@@ -20,7 +20,7 @@ class CreateProjectDetailsTable extends Migration
             $table->unsignedBigInteger('project_category_id');
             $table->index('project_category_id');
             $table->foreign('project_category_id')->references('id')->on('project_categories');
-            $table->date('deadline');
+            $table->date('deadline')->nullable();
             $table->unsignedBigInteger('budget');
             $table->unsignedBigInteger('client_user_id');
             $table->index('client_user_id');
