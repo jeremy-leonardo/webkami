@@ -15,6 +15,9 @@ class CreateDeveloperInformationsTable extends Migration
     {
         Schema::create('developer_informations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->index('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('last_formal_education_level_id');
             $table->index('last_formal_education_level_id');
             $table->foreign('last_formal_education_level_id')->references('id')->on('education_levels');
