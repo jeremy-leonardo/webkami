@@ -10,11 +10,11 @@
 
 <div class="container mt-3">
 
-    <h1>
+    <h1 class="sm">
         Dashboard
     </h1>
 
-    <p class="mb-1">Halo {{Auth::user()->name}}</p>
+    <p class="mb-1 mt-4">Halo {{Auth::user()->name}}</p>
     <h5>Anda belum terdaftar sebagai pencari jasa maupun penyedia jasa</h5>
     <p class="more-information-text">Jangan khawatir, Anda dapat melakukan switching "sebagai pencari jasa" dan "sebagai penyedia jasa".</p>
 

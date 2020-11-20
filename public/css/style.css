@@ -54,3 +54,7 @@ footer {
     color: inherit !important;
     text-decoration: none !important;
 }
+
+h1.sm {
+    font-size: 1.15rem;
+}
