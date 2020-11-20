@@ -17,15 +17,22 @@ class UsersTableSeeder extends Seeder
             [
                 'email' => 'developer@mail.com',
                 'name' => 'Anto Dev',
-                'password' => bcrypt('developer12345'),
+                'password' => bcrypt('password12345'),
                 'is_client' => FALSE,
                 'is_developer' => TRUE,
             ],
             [
                 'email' => 'client@mail.com',
                 'name' => 'Budi Clent',
-                'password' => bcrypt('client12345'),
+                'password' => bcrypt('password12345'),
                 'is_client' => TRUE,
+                'is_developer' => FALSE,
+            ],
+            [
+                'email' => 'jeremy@mail.com',
+                'name' => 'Jeremy',
+                'password' => bcrypt('password12345'),
+                'is_client' => FALSE,
                 'is_developer' => FALSE,
             ],
         ]);

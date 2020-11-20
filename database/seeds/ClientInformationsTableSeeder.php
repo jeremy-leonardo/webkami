@@ -21,7 +21,7 @@ class ClientInformationsTableSeeder extends Seeder
                 'phone' => '4612414'
             ],
             [
-                'user_id' => 3,
+                'user_id' => 4,
                 'company' => 'PT. Internasional Dunia Kaya Makmur',
                 'description' => 'PT. Internasional Dunia Kaya Makmur adalah perusahaan terbuka yang bekerja di sektor pertambangan',
                 'field' => 'Pertambangan',
