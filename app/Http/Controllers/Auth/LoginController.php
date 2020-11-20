@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -40,30 +41,34 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function validateCredentials(UserContract $user, array $credentials)
+    protected function validator(Request $request)
     {
-        $plain = $credentials['password'];
-
-        return $this->hasher->check($plain, $user->getAuthPassword());
+        return Validator::make($request->all(), [
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
         return redirect()->route('home');
     }
 
     public function login(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        $validator = $this->validator($request);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('/');
         }
-        return back()->withInput($request->only('email', 'remember'))->withErrors(['Failed to log in']);
+        return back()->withErrors(['misc' => 'Login attempt failed! Please check your credentials again.']);
     }
 
     public function index()
     {
         return view('auth.login');
     }
-
 }
