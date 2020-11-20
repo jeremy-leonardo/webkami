@@ -1,29 +1,3 @@
-body {
-    /* Global Font */
-    font-family: Roboto, sans-serif;
-}
-
-/* Bootstrap overrides */
-.btn-primary {
-    background: #f37027;
-    border: 1px solid #f37027;
-    /* width: 208px; */
-    /* height: 49px; */
-    /* border-radius: 5px; */
-    /* font-style: normal; */
-    /* font-weight: 500; */
-    /* font-size: 18px; */
-    /* line-height: 21px; */
-}
-.btn-primary:hover {
-    background: #da6729;
-    border: 1px solid #da6729;
-}
-.btn {
-    min-width: 180px;
-}
-/* ==================== */
-
 .vector-bg {
     background-image: url("/images/background/blue-background.svg");
     background-repeat: no-repeat;
@@ -40,7 +14,7 @@ body {
     position: sticky !important;
 }
 
-.non-footer {
+.not-footer {
     min-height: calc(100vh - 120px);
 }
 

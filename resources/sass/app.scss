@@ -1,1 +1,15 @@
-//
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap overrides
+$theme-colors: (
+    "primary": $orange,
+);
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+@import "style";
