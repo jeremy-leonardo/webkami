@@ -23,7 +23,7 @@ Route::post('/register', 'Auth\RegisterController@create');
 
 Route::get('/features', function () { return view('coming-soon'); });
 Route::get('/how-it-works', function () { return view('coming-soon'); });
-Route::get('/dashboard', function () { return view('coming-soon'); });
+Route::get('/dashboard', 'DashboardController@index');
 Route::get('/coming-soon', function () { return view('coming-soon'); });
 
 Route::get('/', function () { return view('home'); })->name('home');

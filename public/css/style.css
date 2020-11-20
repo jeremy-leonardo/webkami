@@ -19,6 +19,9 @@ body {
     background: #da6729;
     border: 1px solid #da6729;
 }
+.btn {
+    min-width: 180px;
+}
 /* ==================== */
 
 .vector-bg {
@@ -46,7 +49,8 @@ footer {
     height: 60px;
 }
 
-.no-decor, .no-decor:hover {
+.no-decor,
+.no-decor:hover {
     color: inherit !important;
     text-decoration: none !important;
 }

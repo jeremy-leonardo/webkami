@@ -1,0 +1,12 @@
+@media (max-width: 767.98px) { 
+    .border-right {
+        border: none !important;
+    }
+    .border-left {
+        border: none !important;
+    }
+}
+
+.more-information-text{
+    font-size: 0.8rem;
+}
