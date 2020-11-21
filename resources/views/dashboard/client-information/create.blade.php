@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container mt-3">
+<div class="container mt-3 mb-5">
 
     <h2 class="sm-heading">
         Dashboard

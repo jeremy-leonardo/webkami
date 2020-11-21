@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectDetail extends Model
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'project_category_id',
+        'deadline',
+        'budget',
+        'client_user_id',
+    ];
+
     public function projectCategory()
     {
         return $this->hasOne('App\ProjectCategory', 'project_category_id');

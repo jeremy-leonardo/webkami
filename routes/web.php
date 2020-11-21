@@ -31,6 +31,8 @@ Route::post('/dashboard/developer/information', 'DeveloperInformationController@
 Route::get('/dashboard/client/information/create', 'ClientInformationController@create');
 Route::post('/dashboard/client/information', 'ClientInformationController@store');
 
+Route::get('/dashboard/client/project-detail/create', 'ProjectDetailController@create');
+Route::post('/dashboard/client/project-detail', 'ProjectDetailController@store');
 
 Route::get('/coming-soon', function () { return view('coming-soon'); });
 

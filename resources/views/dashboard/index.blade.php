@@ -20,6 +20,7 @@
         Dashboard
     </h1>
 
+    @if(!Auth::user()->is_developer && !Auth::user()->is_client)
     <p class="mb-1 mt-4">Halo {{Auth::user()->name}}</p>
     <h5>Anda belum terdaftar sebagai pencari jasa maupun penyedia jasa</h5>
     {{-- <p class="more-information-text">Jangan khawatir, Anda dapat melakukan switching "sebagai pencari jasa" dan "sebagai penyedia jasa".</p> --}}
@@ -44,6 +45,21 @@
             </a>
         </div>
     </div>
+    @endif
+
+    @if(Auth::user()->is_client)
+    <div class="text-center">
+        <h5>Anda belum mendaftarkan project</h5>
+        <div class="mt-4">
+            <a href="{{url('/dashboard/client/project-detail/create')}}">
+                <button type="button" class="btn btn-primary">Daftarkan Project</button>
+            </a>
+        </div>
+        <div class="mt-3">
+            <img class="img-fluid" src="{{asset('images/dashboard/kanban-board.svg')}}" alt="">
+        </div>
+    </div>
+    @endif
 
 </div>
 
