@@ -22,7 +22,7 @@
 
     <p class="mb-1 mt-4">Halo {{Auth::user()->name}}</p>
     <h5>Anda belum terdaftar sebagai pencari jasa maupun penyedia jasa</h5>
-    <p class="more-information-text">Jangan khawatir, Anda dapat melakukan switching "sebagai pencari jasa" dan "sebagai penyedia jasa".</p>
+    {{-- <p class="more-information-text">Jangan khawatir, Anda dapat melakukan switching "sebagai pencari jasa" dan "sebagai penyedia jasa".</p> --}}
 
     <div class="row">
         <div class="col-md-6 text-center p-5 border-right">
