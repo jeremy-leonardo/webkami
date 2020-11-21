@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="container mt-3">
+<div class="container mt-3 mb-4">
 
     @if (session('status'))
     <div class="alert alert-success">
@@ -91,6 +91,16 @@
             @endforeach
         </tbody>
     </table>
+    <div class="text-center mt-4">
+        <div>
+            <p>atau</p>
+        </div>
+        <div>
+            <a href="{{url('/dashboard/client/project-detail/create')}}">
+                <button type="button" class="btn btn-primary">Daftarkan Project</button>
+            </a>
+        </div>
+    </div>
     @endif
 
     @endif
