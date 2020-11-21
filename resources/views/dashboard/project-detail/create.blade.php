@@ -66,7 +66,7 @@
         @enderror
 
         <div class="text-center submit-container">
-            <button type="submit" class="btn btn-primary">Ajukan Sekarang</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
 
