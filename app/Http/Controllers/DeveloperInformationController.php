@@ -6,6 +6,8 @@ use App\DeveloperInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class DeveloperInformationController extends Controller
 {
@@ -21,9 +23,12 @@ class DeveloperInformationController extends Controller
 
     public function create()
     {
+        if (DeveloperInformation::where('user_id', Auth::user()->id)->exists()) {
+            return redirect('dashboard');
+        }
         return view('dashboard.developer-information.create');
     }
-    
+
     protected function validator(Request $request)
     {
         return Validator::make($request->all(), [
@@ -49,21 +54,40 @@ class DeveloperInformationController extends Controller
             return back()->withInput()->withErrors($validator);
         }
 
-        DeveloperInformation::create([
-            'user_id' => Auth::user()->id,
-            'last_formal_education_level_id' => $request['last_formal_education_level'],
-            'last_formal_education_institution' => $request['last_formal_education_institution'],
-            'last_formal_education_field_of_study' => $request['last_formal_education_field_of_study'],
-            'current_formal_education_level_id' => $request['current_formal_education_level'],
-            'current_formal_education_institution' => $request['current_formal_education_institution'],
-            'current_formal_education_field_of_study' => $request['current_formal_education_field_of_study'],
-            'other_education' => $request['other_education'],
-            'skills' => $request['skills'],
-            'portfolio_link' => $request['portfolio_link'],
-            'linkedin_link' => $request['linkedin_link'],
-            'phone' => $request['phone'],
-        ]);
+        if (DeveloperInformation::where('user_id', Auth::user()->id)->exists()) {
+            return redirect('dashboard');
+        }
+
+        DB::beginTransaction();
+        try {
+
+            DeveloperInformation::create([
+                'user_id' => Auth::user()->id,
+                'last_formal_education_level_id' => $request['last_formal_education_level'],
+                'last_formal_education_institution' => $request['last_formal_education_institution'],
+                'last_formal_education_field_of_study' => $request['last_formal_education_field_of_study'],
+                'current_formal_education_level_id' => $request['current_formal_education_level'],
+                'current_formal_education_institution' => $request['current_formal_education_institution'],
+                'current_formal_education_field_of_study' => $request['current_formal_education_field_of_study'],
+                'other_education' => $request['other_education'],
+                'skills' => $request['skills'],
+                'portfolio_link' => $request['portfolio_link'],
+                'linkedin_link' => $request['linkedin_link'],
+                'phone' => $request['phone'],
+            ]);
+
+            $user = Auth::user();
+            $user->is_developer = TRUE;
+            $user->save();
+
+            DB::commit();
+        } catch (Exception $exc) {
+            DB::rollback();
+            return response()->json(['error' => $exc->getMessage()], 500);
+        }
+
+
+
         return redirect('dashboard')->with(['status' => 'Success completing information']);
     }
-
 }
