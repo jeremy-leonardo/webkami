@@ -19,7 +19,7 @@ class ProjectDetailController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function create()
@@ -27,7 +27,7 @@ class ProjectDetailController extends Controller
         if (!ClientInformation::where('user_id', Auth::user()->id)->exists()) {
             return redirect('dashboard');
         }
-        return view('dashboard.project-detail.create');
+        return view('dashboard.project-details.create');
     }
 
     protected function validator(Request $request)
@@ -63,5 +63,13 @@ class ProjectDetailController extends Controller
         ]);
 
         return redirect('dashboard')->with(['status' => 'Success creating project']);
+    }
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $project_details = ProjectDetail::where('title', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%")->paginate(5);
+        return view('project-detail.index', ['project_details' => $project_details]);
     }
 }

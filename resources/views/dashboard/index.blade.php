@@ -53,7 +53,7 @@
     <div class="text-center mt-4">
         <h5>Anda belum mendaftarkan project</h5>
         <div class="mt-4">
-            <a href="{{url('/dashboard/client/project-detail/create')}}">
+            <a href="{{url('/dashboard/client/project-details/create')}}">
                 <button type="button" class="btn btn-primary">Daftarkan Project</button>
             </a>
         </div>
@@ -81,9 +81,9 @@
                 <td>{{ $project_detail->title }}</td>
                 <td>{{ $project_detail->project ? $project_detail->projectStatus->name : "Belum Diambil" }}</td>
                 <td>{{ $project_detail->projectCategory->name }}</td>
-                <td>{{ $project_detail->deadline }}</td>
+                <td>{{ date('d M Y', strtotime($project_detail->deadline)) }}</td>
                 <td>
-                    <a href="/dashboard/client/project-detail/{{ $project_detail->id }}">
+                    <a href="/dashboard/client/project-details/{{ $project_detail->id }}">
                         View Detail
                     </a>
                 </td>
@@ -96,7 +96,7 @@
             <p>atau</p>
         </div>
         <div>
-            <a href="{{url('/dashboard/client/project-detail/create')}}">
+            <a href="{{url('/dashboard/client/project-details/create')}}">
                 <button type="button" class="btn btn-primary">Daftarkan Project</button>
             </a>
         </div>

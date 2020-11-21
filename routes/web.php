@@ -20,8 +20,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
 Route::post('/register', 'Auth\RegisterController@create');
 
-Route::get('/features', function () { return view('coming-soon'); });
-Route::get('/how-it-works', function () { return view('coming-soon'); });
+Route::get('/how-it-works', function () { return view('how-it-works'); });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -31,8 +30,10 @@ Route::post('/dashboard/developer/information', 'DeveloperInformationController@
 Route::get('/dashboard/client/information/create', 'ClientInformationController@create');
 Route::post('/dashboard/client/information', 'ClientInformationController@store');
 
-Route::get('/dashboard/client/project-detail/create', 'ProjectDetailController@create');
-Route::post('/dashboard/client/project-detail', 'ProjectDetailController@store');
+Route::get('/dashboard/client/project-details/create', 'ProjectDetailController@create');
+Route::post('/dashboard/client/project-details', 'ProjectDetailController@store');
+
+Route::get('/project-details', 'ProjectDetailController@index');
 
 Route::get('/coming-soon', function () { return view('coming-soon'); });
 

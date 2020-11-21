@@ -15,7 +15,7 @@
     <h1>Daftarkan Project Baru</h1>
     <p>Agar kami dapat memberikan konsultasi mengenai kebutuhan Anda dengan baik, maka mohon lengkapi data berikut:</p>
 
-    <form method="POST" action="/dashboard/client/project-detail">
+    <form method="POST" action="/dashboard/client/project-details">
         @csrf
 
         <div class="form-group">

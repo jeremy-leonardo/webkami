@@ -10,8 +10,8 @@
                     <li class="nav-item {{ (request()->is('how-it-works')) ? 'active' : '' }}">
                         <a class="nav-link" href="/how-it-works">Cara Kerja</a>
                     </li>
-                    <li class="nav-item {{ (request()->is('features')) ? 'active' : '' }}">
-                        <a class="nav-link" href="/features">Fitur</a>
+                    <li class="nav-item {{ (request()->is('project-details')) ? 'active' : '' }}">
+                        <a class="nav-link" href="/project-details">Cari Project</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
