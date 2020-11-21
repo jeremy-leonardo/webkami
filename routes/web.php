@@ -29,6 +29,9 @@ Route::get('/dashboard/developer/information/create', 'DeveloperInformationContr
 Route::post('/dashboard/developer/information', 'DeveloperInformationController@store');
 
 Route::get('/dashboard/client/information/create', 'ClientInformationController@create');
+Route::post('/dashboard/client/information', 'ClientInformationController@store');
+
+
 Route::get('/coming-soon', function () { return view('coming-soon'); });
 
 Route::get('/', function () { return view('home'); })->name('home');
