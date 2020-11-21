@@ -28,4 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function projectDetails()
+    {
+        return $this->hasMany('App\ProjectDetail', 'client_user_id');
+    }
 }

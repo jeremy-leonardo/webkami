@@ -23,10 +23,14 @@ class ProjectDetail extends Model
 
     public function projectCategory()
     {
-        return $this->hasOne('App\ProjectCategory', 'project_category_id');
+        return $this->belongsTo('App\ProjectCategory', 'project_category_id');
     }
     public function clientUser()
     {
-        return $this->hasOne('App\User', 'client_user_id');
+        return $this->belongsTo('App\User', 'client_user_id');
+    }
+    public function project()
+    {
+        return $this->hasOne('App\Project', 'project_id');
     }
 }
