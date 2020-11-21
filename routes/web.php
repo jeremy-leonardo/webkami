@@ -20,10 +20,15 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
 Route::post('/register', 'Auth\RegisterController@create');
 
-
 Route::get('/features', function () { return view('coming-soon'); });
 Route::get('/how-it-works', function () { return view('coming-soon'); });
-Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/dashboard/developer/information/create', 'DeveloperInformationController@create');
+Route::post('/dashboard/developer/information', 'DeveloperInformationController@store');
+
+Route::get('/dashboard/client/information/create', 'ClientInformationController@create');
 Route::get('/coming-soon', function () { return view('coming-soon'); });
 
 Route::get('/', function () { return view('home'); })->name('home');

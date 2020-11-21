@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeveloperInformationsTable extends Migration
+class CreateDeveloperInformationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDeveloperInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('developer_informations', function (Blueprint $table) {
+        Schema::create('developer_information', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->index('user_id');
@@ -44,6 +44,6 @@ class CreateDeveloperInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('developer_informations');
+        Schema::dropIfExists('developer_information');
     }
 }

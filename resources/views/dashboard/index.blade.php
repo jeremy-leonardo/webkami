@@ -10,7 +10,13 @@
 
 <div class="container mt-3">
 
-    <h1 class="sm">
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+
+    <h1 class="sm-heading">
         Dashboard
     </h1>
 
@@ -24,15 +30,18 @@
             <div class="m-5">
                 <img class="img-fluid" src="{{asset('images/dashboard/status-board.svg')}}" alt="">
             </div>
-            <button type="button" class="btn btn-primary">Daftar</button>
-
+            <a href="{{url('/dashboard/client/information/create')}}">
+                <button type="button" class="btn btn-primary">Daftar</button>
+            </a>
         </div>
         <div class="col-md-6 text-center p-5 border-left">
             <h5>Daftar sebagai penyedia jasa</h5>
             <div class="m-5">
                 <img class="img-fluid" src="{{asset('images/dashboard/kanban-board.svg')}}" alt="">
             </div>
-            <button type="button" class="btn btn-primary">Daftar</button>
+            <a href="{{url('/dashboard/developer/information/create')}}">
+                <button type="button" class="btn btn-primary">Daftar</button>
+            </a>
         </div>
     </div>
 

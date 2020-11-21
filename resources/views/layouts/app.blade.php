@@ -36,8 +36,8 @@
 
 <body>
 
-    <div class="not-footer">
-        @include('layouts._partials.navigation')
+    @include('layouts._partials.navigation')
+    <div class="content">
         @yield('content')
     </div>
     @include('layouts._partials.footer')

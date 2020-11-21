@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ClientInformationsTableSeeder extends Seeder
+class ClientInformationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class ClientInformationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('client_informations')->insert([
+        DB::table('client_information')->insert([
             [
                 'user_id' => 2,
                 'company' => 'PT. Akselerasi Dunia Indonesia Jaya Pertama',
