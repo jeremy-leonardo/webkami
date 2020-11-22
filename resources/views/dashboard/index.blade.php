@@ -107,7 +107,19 @@
 
     @if(Auth::user()->is_developer)
 
-    @if(App\Project::where('developer_user_id', '=', Auth::user()->id)->count() > 0)
+    @if(App\Project::where('developer_user_id', '=', Auth::user()->id)->count() == 0)
+    <div class="text-center mt-4">
+        <h5>Anda belum mengambil project</h5>
+        <div class="mt-4">
+            <a href="{{url('/project-details')}}">
+                <button type="button" class="btn btn-primary">Ambil Project</button>
+            </a>
+        </div>
+        <div class="mt-3">
+            <img class="img-fluid" src="{{asset('images/dashboard/status-board.svg')}}" alt="">
+        </div>
+    </div>
+    @else
     <h5 class="mt-4">Taken Projects</h5>
     <table class="table">
         <thead>
