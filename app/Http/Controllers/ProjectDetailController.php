@@ -70,8 +70,10 @@ class ProjectDetailController extends Controller
     {
         $search = $request->input('search');
         $project_details = ProjectDetail::where('is_taken', '=', FALSE)
-            ->where('title', 'like', "%$search%")
-            ->orWhere('description', 'like', "%$search%")->paginate(5);
+            ->where(function($query) use ($search){
+                $query->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%");
+            })->paginate(5);
         return view('project-detail.index', ['project_details' => $project_details]);
     }
 
