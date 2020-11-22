@@ -49,7 +49,7 @@
 
     @if(Auth::user()->is_client)
 
-    @if(!App\ProjectDetail::all())
+    @if(App\ProjectDetail::where('client_user_id', '=', Auth::user()->id)->count() > 0)
     <div class="text-center mt-4">
         <h5>Anda belum mendaftarkan project</h5>
         <div class="mt-4">
@@ -75,7 +75,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(App\ProjectDetail::all() as $project_detail)
+            @foreach(App\ProjectDetail::where('client_user_id', '=', Auth::user()->id)->get() as $project_detail)
             <tr>
                 <th scope="row">{{ $loop->index + 1 }}</th>
                 <td>{{ $project_detail->title }}</td>
@@ -83,7 +83,7 @@
                 <td>{{ $project_detail->projectCategory->name }}</td>
                 <td>{{ date('d M Y', strtotime($project_detail->deadline)) }}</td>
                 <td>
-                    <a href="/dashboard/client/project-details/{{ $project_detail->id }}">
+                    <a href="/project-details/{{ $project->projectDetail->id }}">
                         View Detail
                     </a>
                 </td>
@@ -98,6 +98,52 @@
         <div>
             <a href="{{url('/dashboard/client/project-details/create')}}">
                 <button type="button" class="btn btn-primary">Daftarkan Project</button>
+            </a>
+        </div>
+    </div>
+    @endif
+
+    @endif
+
+    @if(Auth::user()->is_developer)
+
+    @if(App\Project::where('developer_user_id', '=', Auth::user()->id)->count() > 0)
+    <h5 class="mt-4">Taken Projects</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Judul</th>
+                <th scope="col">Status</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(App\Project::where('developer_user_id', '=', Auth::user()->id)->get() as $project)
+            <tr>
+                <th scope="row">{{ $loop->index + 1 }}</th>
+                <td>{{ $project->projectDetail->title }}</td>
+                <td>{{ $project->projectStatus->name }}</td>
+                <td>{{ $project->projectDetail->projectCategory->name }}</td>
+                <td>{{ date('d M Y', strtotime($project->projectDetail->deadline)) }}</td>
+                <td>
+                    <a href="/project-details/{{ $project->projectDetail->id }}">
+                        View Detail
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <div>
+            <p>atau</p>
+        </div>
+        <div>
+            <a href="{{url('/project-details')}}">
+                <button type="button" class="btn btn-primary">Cari Project</button>
             </a>
         </div>
     </div>
