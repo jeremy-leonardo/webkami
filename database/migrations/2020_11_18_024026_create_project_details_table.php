@@ -25,6 +25,7 @@ class CreateProjectDetailsTable extends Migration
             $table->unsignedBigInteger('client_user_id');
             $table->index('client_user_id');
             $table->foreign('client_user_id')->references('id')->on('users');
+            $table->boolean('is_taken')->default(FALSE);
             $table->timestamps();
         });
     }

@@ -18,9 +18,12 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('project_detail_id');
             $table->index('project_detail_id');
             $table->foreign('project_detail_id')->references('id')->on('project_details');
-            $table->unsignedBigInteger('project_id');
-            $table->index('project_id');
-            $table->foreign('project_id')->references('id')->on('project_statuses');
+            $table->unsignedBigInteger('project_status_id');
+            $table->index('project_status_id');
+            $table->foreign('project_status_id')->references('id')->on('project_statuses');
+            $table->unsignedBigInteger('developer_user_id');
+            $table->index('developer_user_id');
+            $table->foreign('developer_user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

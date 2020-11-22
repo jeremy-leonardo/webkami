@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ClientInformation;
+use App\Project;
 use App\ProjectDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -68,8 +69,31 @@ class ProjectDetailController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $project_details = ProjectDetail::where('title', 'like', "%$search%")
+        $project_details = ProjectDetail::where('is_taken', '=', FALSE)
+            ->where('title', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%")->paginate(5);
         return view('project-detail.index', ['project_details' => $project_details]);
+    }
+
+    public function show($id)
+    {
+        $project_detail = ProjectDetail::find($id);
+        return view('project-detail.show', ['project_detail' => $project_detail]);
+    }
+
+    public function take($id)
+    {
+        $project_detail = ProjectDetail::find($id);
+
+        Project::create([
+            'project_detail_id' => $id,
+            'project_status_id' => 1,
+            'developer_user_id' => Auth::user()->id
+        ]);
+
+        $project_detail->is_taken = TRUE;
+        $project_detail->save();
+
+        return redirect('dashboard')->with(['status' => 'Success taking the project']);
     }
 }
