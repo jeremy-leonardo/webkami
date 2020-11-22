@@ -31,6 +31,6 @@ class ProjectDetail extends Model
     }
     public function project()
     {
-        return $this->hasOne('App\Project', 'project_id');
+        return $this->hasOne('App\Project', 'project_detail_id');
     }
 }

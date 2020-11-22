@@ -72,6 +72,21 @@
                             </div>
                         </div>
                     </div>
+                    @if($project_detail->is_taken && Auth::user()->id == $project_detail->clientUser->id)
+                    <div class="card m-2">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 text-primary">
+                                    DIAMBIL OLEH
+                                </div>
+                                <div class="col-md-8">
+                                    {{$project_detail->project->developerUser->name}}<br>
+                                    Nomor Telp: {{$project_detail->project->developerUser->developerInformation->phone}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <div class="col-md-4">
                     <div class="card m-2">
@@ -116,15 +131,22 @@
             </div>
         </div>
         @auth
-        @if(Auth::user()->is_developer)
         <div class="card-footer bg-white text-muted text-center">
+        @if(Auth::user()->is_developer)
+        @if(!$project_detail->is_taken)
             <form method="POST" action="/project-details/{{$project_detail->id}}/take">
                 @csrf
                 @method('PUT')
                 <button class="btn btn-primary" type="submit">Ambil Project</button>
             </form>
-        </div>
+        @else
+            {{-- TODO: change status buttons (depending on previous status) --}}
         @endif
+        @endif
+        @if(Auth::user()->is_client && $project_detail->clientUser->id == Auth::user()->id && !$project_detail->is_taken)
+            {{-- TODO: edit project detail button --}}
+        @endif
+        </div>
         @endauth
         @guest
         <div class="card-footer bg-white text-muted text-center">

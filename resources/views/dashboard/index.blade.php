@@ -49,7 +49,7 @@
 
     @if(Auth::user()->is_client)
 
-    @if(App\ProjectDetail::where('client_user_id', '=', Auth::user()->id)->count() > 0)
+    @if(App\ProjectDetail::where('client_user_id', '=', Auth::user()->id)->count() == 0)
     <div class="text-center mt-4">
         <h5>Anda belum mendaftarkan project</h5>
         <div class="mt-4">
@@ -79,11 +79,11 @@
             <tr>
                 <th scope="row">{{ $loop->index + 1 }}</th>
                 <td>{{ $project_detail->title }}</td>
-                <td>{{ $project_detail->project ? $project_detail->projectStatus->name : "Belum Diambil" }}</td>
+                <td>{{ $project_detail->is_taken ? $project_detail->project->projectStatus->name : "Belum Diambil" }}</td>
                 <td>{{ $project_detail->projectCategory->name }}</td>
                 <td>{{ date('d M Y', strtotime($project_detail->deadline)) }}</td>
                 <td>
-                    <a href="/project-details/{{ $project->projectDetail->id }}">
+                    <a href="/project-details/{{ $project_detail->id }}">
                         View Detail
                     </a>
                 </td>
