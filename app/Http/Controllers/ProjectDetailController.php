@@ -68,11 +68,18 @@ class ProjectDetailController extends Controller
 
     public function index(Request $request)
     {
+        $db_config = (object) DB::connection()->getConfig();
+        $db_type = $db_config->driver;
         $search = $request->input('search');
         $project_details = ProjectDetail::where('is_taken', '=', FALSE)
-            ->where(function($query) use ($search){
-                $query->where('title', 'like', "%$search%")
-                ->orWhere('description', 'like', "%$search%");
+            ->where(function($query) use ($search, $db_type){
+                if($db_type == 'pgsql'){
+                    $query->where('title', 'ilike', "%$search%")
+                    ->orWhere('description', 'ilike', "%$search%");
+                }else{
+                    $query->where('title', 'like', "%$search%")
+                    ->orWhere('description', 'like', "%$search%");
+                }
             })->paginate(5);
         return view('project-detail.index', ['project_details' => $project_details]);
     }
