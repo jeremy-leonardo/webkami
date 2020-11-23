@@ -35,7 +35,9 @@ Route::post('/dashboard/client/project-details', 'ProjectDetailController@store'
 
 Route::get('/project-details', 'ProjectDetailController@index');
 Route::get('/project-details/{id}', 'ProjectDetailController@show');
+Route::get('/project-details/{id}/edit', 'ProjectDetailController@edit');
 Route::put('/project-details/{id}/take', 'ProjectDetailController@take');
+Route::put('/project-details/{id}', 'ProjectDetailController@update');
 Route::put('/project-details/{project_id}/change-status/{target_project_status_id}', 'ProjectController@changeStatus');
 
 Route::get('/coming-soon', function () { return view('coming-soon'); });

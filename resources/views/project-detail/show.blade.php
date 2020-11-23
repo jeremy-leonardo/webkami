@@ -135,8 +135,8 @@
             @if(Auth::user()->is_developer)
             @if($project_detail->is_taken)
             @php
-                $next_status_id = $project_detail->project->projectStatus->id + 1;
-                $next_status = App\ProjectStatus::find($next_status_id);
+            $next_status_id = $project_detail->project->projectStatus->id + 1;
+            $next_status = App\ProjectStatus::find($next_status_id);
             @endphp
             @if($next_status)
             <form method="POST" action="/project-details/{{$project_detail->project->id}}/change-status/{{$next_status_id}}">
@@ -154,7 +154,9 @@
             @endif
             @endif
             @if(Auth::user()->is_client && $project_detail->clientUser->id == Auth::user()->id && !$project_detail->is_taken)
-            {{-- TODO: edit project detail button if not taken --}}
+            <a href="/project-details/{{$project_detail->id}}/edit">
+                <button class="btn btn-primary" type="submit">Edit Project Detail</button>
+            </a>
             @endif
         </div>
         @endauth
