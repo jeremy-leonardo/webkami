@@ -132,20 +132,30 @@
         </div>
         @auth
         <div class="card-footer bg-white text-muted text-center">
-        @if(Auth::user()->is_developer)
-        @if(!$project_detail->is_taken)
+            @if(Auth::user()->is_developer)
+            @if($project_detail->is_taken)
+            @php
+                $next_status_id = $project_detail->project->projectStatus->id + 1;
+                $next_status = App\ProjectStatus::find($next_status_id);
+            @endphp
+            @if($next_status)
+            <form method="POST" action="/project-details/{{$project_detail->project->id}}/change-status/{{$next_status_id}}">
+                @csrf
+                @method('PUT')
+                <button class="btn btn-primary" type="submit">Ubah Status Menjadi "{{$next_status->name}}"</button>
+            </form>
+            @endif
+            @else
             <form method="POST" action="/project-details/{{$project_detail->id}}/take">
                 @csrf
                 @method('PUT')
                 <button class="btn btn-primary" type="submit">Ambil Project</button>
             </form>
-        @else
-            {{-- TODO: change status buttons (depending on previous status) --}}
-        @endif
-        @endif
-        @if(Auth::user()->is_client && $project_detail->clientUser->id == Auth::user()->id && !$project_detail->is_taken)
-            {{-- TODO: edit project detail button --}}
-        @endif
+            @endif
+            @endif
+            @if(Auth::user()->is_client && $project_detail->clientUser->id == Auth::user()->id && !$project_detail->is_taken)
+            {{-- TODO: edit project detail button if not taken --}}
+            @endif
         </div>
         @endauth
         @guest

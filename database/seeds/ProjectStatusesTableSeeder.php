@@ -17,7 +17,7 @@ class ProjectStatusesTableSeeder extends Seeder
                 'name' => 'Dalam Pengerjaan',
             ],
             [
-                'name' => 'Menunggu Pembayaran',
+                'name' => 'Pengerjaan Selesai (Menunggu Pembayaran)',
             ],
             [
                 'name' => 'Selesai',

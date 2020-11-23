@@ -22,6 +22,11 @@ class ProjectController extends Controller
         $this->middleware('auth');
     }
 
-
+    public function changeStatus($project_id, $target_project_status_id){
+        $project = Project::find($project_id);
+        $project->project_status_id = $target_project_status_id;
+        $project->save();
+        return back();
+    }
 
 }
