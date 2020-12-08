@@ -16,9 +16,27 @@
     </div>
     @endif
 
-    <h1 class="sm-heading">
-        Dashboard
-    </h1>
+    <div class="row">
+        <div class="col-auto">
+            <h1 class="sm-heading">
+                Dashboard
+            </h1>
+        </div>
+        @if(Auth::user()->is_developer)
+        <div class="col">
+            <a href="{{url('/dashboard/developer/information/' . Auth::user()->developerInformation->id . '/edit')}}">
+                <button type="button" class="btn btn-outline-primary btn-sm">Edit Informasi Anda sebagai Developer</button>
+            </a>
+        </div>
+        @endif
+        @if(Auth::user()->is_client)
+        <div class="col">
+            <a href="{{url('/dashboard/client/information/' . Auth::user()->clientInformation->id . '/edit')}}">
+                <button type="button" class="btn btn-outline-primary btn-sm">Edit Informasi Anda sebagai Client</button>
+            </a>
+        </div>
+        @endif
+    </div>
 
     @if(!Auth::user()->is_developer && !Auth::user()->is_client)
     <p class="mb-1 mt-4">Halo {{Auth::user()->name}}</p>

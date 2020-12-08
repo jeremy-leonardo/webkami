@@ -26,9 +26,13 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/dashboard/developer/information/create', 'DeveloperInformationController@create');
 Route::post('/dashboard/developer/information', 'DeveloperInformationController@store');
+Route::get('/dashboard/developer/information/{id}/edit', 'DeveloperInformationController@edit');
+Route::put('/dashboard/developer/information/{id}', 'DeveloperInformationController@update');
 
 Route::get('/dashboard/client/information/create', 'ClientInformationController@create');
 Route::post('/dashboard/client/information', 'ClientInformationController@store');
+Route::get('/dashboard/client/information/{id}/edit', 'ClientInformationController@edit');
+Route::put('/dashboard/client/information/{id}', 'ClientInformationController@update');
 
 Route::get('/dashboard/client/project-details/create', 'ProjectDetailController@create');
 Route::post('/dashboard/client/project-details', 'ProjectDetailController@store');

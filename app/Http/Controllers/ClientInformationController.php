@@ -76,4 +76,31 @@ class ClientInformationController extends Controller
 
         return redirect('dashboard')->with(['status' => 'Success completing information']);
     }
+
+    public function edit($id)
+    {
+        $client_information = ClientInformation::find($id);
+        if (Auth::user()->id == $client_information->user_id) {
+            return view('dashboard.client-information.edit', ['client_information' => $client_information]);
+        }
+    }
+
+    public function update($id, Request $request)
+    {
+        $developer_information = ClientInformation::find($id);
+        if (Auth::user()->id == $developer_information->user_id) {
+            $validator = $this->validator($request);
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
+            $developer_information->company = $request['company'];
+            $developer_information->description = $request['description'];
+            $developer_information->field = $request['field'];
+            $developer_information->phone = $request['phone'];
+            $developer_information->save();
+            return redirect('dashboard')->with(['status' => 'Success updating information']);
+        } else {
+            return redirect('dashboard');
+        }
+    }
 }

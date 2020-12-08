@@ -90,4 +90,38 @@ class DeveloperInformationController extends Controller
 
         return redirect('dashboard')->with(['status' => 'Success completing information']);
     }
+
+    public function edit($id)
+    {
+        $developer_information = DeveloperInformation::find($id);
+        if (Auth::user()->id == $developer_information->user_id) {
+            return view('dashboard.developer-information.edit', ['developer_information' => $developer_information]);
+        }
+    }
+
+    public function update($id, Request $request)
+    {
+        $developer_information = DeveloperInformation::find($id);
+        if (Auth::user()->id == $developer_information->user_id) {
+            $validator = $this->validator($request);
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
+            $developer_information->last_formal_education_level_id = $request['last_formal_education_level'];
+            $developer_information->last_formal_education_institution = $request['last_formal_education_institution'];
+            $developer_information->last_formal_education_field_of_study = $request['last_formal_education_field_of_study'];
+            $developer_information->current_formal_education_level_id = $request['current_formal_education_level'];
+            $developer_information->current_formal_education_institution = $request['current_formal_education_institution'];
+            $developer_information->current_formal_education_field_of_study = $request['current_formal_education_field_of_study'];
+            $developer_information->other_education = $request['other_education'];
+            $developer_information->skills = $request['skills'];
+            $developer_information->portfolio_link = $request['portfolio_link'];
+            $developer_information->linkedin_link = $request['linkedin_link'];
+            $developer_information->phone = $request['phone'];
+            $developer_information->save();
+            return redirect('dashboard')->with(['status' => 'Success updating information']);
+        } else {
+            return redirect('dashboard');
+        }
+    }
 }
