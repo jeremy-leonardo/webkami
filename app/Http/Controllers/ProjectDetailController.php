@@ -118,6 +118,10 @@ class ProjectDetailController extends Controller
     {
         $project_detail = ProjectDetail::find($id);
         if (Auth::user()->id == $project_detail->client_user_id) {
+            $validator = $this->validator($request);
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
             $project_detail->title = $request['title'];
             $project_detail->description = $request['description'];
             $project_detail->project_category_id = $request['project_category'];
