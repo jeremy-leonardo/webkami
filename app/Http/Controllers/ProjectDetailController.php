@@ -28,7 +28,7 @@ class ProjectDetailController extends Controller
         if (!ClientInformation::where('user_id', Auth::user()->id)->exists()) {
             return redirect('dashboard');
         }
-        return view('dashboard.project-details.create');
+        return view('dashboard.project-detail.create');
     }
 
     protected function validator(Request $request)
