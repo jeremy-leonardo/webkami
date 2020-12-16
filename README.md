@@ -12,3 +12,6 @@ Webkami merupakan sebuah platform yang memfasilitasi antara pihak yang menyediak
 <li> Aprishiela Hartono Putri - 2201829666
 <li> Nico - 2201781994
 </ul>
+
+## Kelas
+LB01 Web Programming
