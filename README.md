@@ -1,6 +1,11 @@
 # Webkami
 A final project made for COMP6144 - Web Programming course, made with Laravel.
 
+## Screenshots
+
+![home](doc-images/home.png?raw=true "home")<br>
+![search-project](doc-images/search-project.png?raw=true "search-project")<br>
+
 ## Group
 LB01 Web Programming
 <ul>
